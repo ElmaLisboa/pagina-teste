@@ -1,20 +1,45 @@
-<script>
-  function gerar() {
-    const url = document.getElementById("url").value;
-    document.getElementById("resultado").innerText = "Gerando resumo...";
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resumo Automático</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
+    }
+    .box {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    #resultado {
+      margin-top: 20px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
 
-    fetch("https://cerebro-saas.onrender.com/gerar", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url })
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (data.erro) {
-        document.getElementById("resultado").innerText = data.erro;
-      } else {
-        document.getElementById("resultado").innerText = data.resumo;
-      }
-    });
-  }
-</script>
+<body>
+  <div class="box">
+    <h2>Resumo automático de página</h2>
+
+    <input
+      id="url"
+      type="text"
+      placeholder="Cole a URL da página de vendas"
+    />
+
+    <button onclick="gerar()">Gerar resumo</
